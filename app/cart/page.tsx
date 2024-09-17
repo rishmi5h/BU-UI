@@ -2,6 +2,7 @@
 
 import { useCart } from "../context/CartContext";
 import { FaTrash, FaMinus, FaPlus } from "react-icons/fa";
+import Image from "next/image";
 
 export default function CartPage() {
   const { cart, removeFromCart, updateQuantity, clearCart } = useCart();
@@ -21,9 +22,22 @@ export default function CartPage() {
                 key={item.id}
                 className='flex items-center justify-between bg-gray-900 p-4 rounded-lg'
               >
-                <div>
-                  <h2 className='text-xl font-semibold'>{item.name}</h2>
-                  <p className='text-gray-400'>₹{item.price.toLocaleString('en-IN')}</p>
+                <div className='flex items-center'>
+                  <div className='relative w-20 h-20 mr-4'>
+                    <Image
+                      src={item.imageFront}
+                      alt={item.name}
+                      layout='fill'
+                      objectFit='cover'
+                      className='rounded'
+                    />
+                  </div>
+                  <div>
+                    <h2 className='text-xl font-semibold'>{item.name}</h2>
+                    <p className='text-gray-400'>
+                      ₹{item.price.toLocaleString("en-IN")}
+                    </p>
+                  </div>
                 </div>
                 <div className='flex items-center space-x-4'>
                   <button
@@ -52,7 +66,9 @@ export default function CartPage() {
             ))}
           </div>
           <div className='mt-8'>
-            <p className='text-2xl font-bold'>Total: ₹{total.toLocaleString('en-IN')}</p>
+            <p className='text-2xl font-bold'>
+              Total: ₹{total.toLocaleString("en-IN")}
+            </p>
             <div className='mt-4 space-x-4'>
               <button
                 onClick={clearCart}
