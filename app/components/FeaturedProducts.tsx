@@ -12,12 +12,12 @@ export default function FeaturedProducts() {
   const { addToWishlist, removeFromWishlist, isInWishlist } = useWishlist();
 
   const featuredProducts = [
-    { id: 1, name: "Black T-Shirt", price: 1999 },
-    { id: 2, name: "Black Jeans", price: 3999 },
-    { id: 3, name: "Black Dress", price: 5999 },
+    { id: 1, name: "T-Shirt", price: 1999 },
+    { id: 2, name: "Jeans", price: 3999 },
+    { id: 3, name: "Dress", price: 5999 },
   ];
 
-  const toggleWishlist = (product: typeof featuredProducts[0]) => {
+  const toggleWishlist = (product: (typeof featuredProducts)[0]) => {
     if (isInWishlist(product.id)) {
       removeFromWishlist(product.id);
     } else {
@@ -25,7 +25,7 @@ export default function FeaturedProducts() {
     }
   };
 
-  const handleAddToCart = (product: typeof featuredProducts[0]) => {
+  const handleAddToCart = (product: (typeof featuredProducts)[0]) => {
     addToCart({ ...product, quantity: 1 });
     setAddedToCart((prev) => [...prev, product.id]);
     setTimeout(() => {
