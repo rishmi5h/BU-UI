@@ -27,9 +27,9 @@ export default function CartPage() {
                     <Image
                       src={item.imageFront}
                       alt={item.name}
-                      layout='fill'
-                      objectFit='cover'
-                      className='rounded'
+                      fill
+                      sizes="(max-width: 80px) 100vw, 80px"
+                      className='rounded object-cover'
                     />
                   </div>
                   <div>

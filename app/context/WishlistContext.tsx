@@ -6,6 +6,8 @@ type WishlistItem = {
   id: number;
   name: string;
   price: number;
+  imageFront: string;
+  imageBack: string;
 };
 
 type WishlistContextType = {
