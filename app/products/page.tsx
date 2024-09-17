@@ -21,12 +21,54 @@ export default function ProductsPage() {
   const { addToWishlist, removeFromWishlist, isInWishlist } = useWishlist();
 
   const products: Product[] = [
-    { id: 1, name: "T-Shirt", price: 1999, gender: "Unisex", size: ["S", "M", "L"], type: "Top" },
-    { id: 2, name: "Jeans", price: 3999, gender: "Men", size: ["30", "32", "34"], type: "Bottom" },
-    { id: 3, name: "Dress", price: 5999, gender: "Women", size: ["S", "M", "L"], type: "Dress" },
-    { id: 4, name: "Sweater", price: 3499, gender: "Unisex", size: ["M", "L", "XL"], type: "Top" },
-    { id: 5, name: "Jacket", price: 6999, gender: "Unisex", size: ["S", "M", "L", "XL"], type: "Outerwear" },
-    { id: 6, name: "Skirt", price: 2999, gender: "Women", size: ["S", "M", "L"], type: "Bottom" },
+    {
+      id: 1,
+      name: "T-Shirt",
+      price: 1999,
+      gender: "Unisex",
+      size: ["S", "M", "L"],
+      type: "Top",
+    },
+    {
+      id: 2,
+      name: "Jeans",
+      price: 3999,
+      gender: "Men",
+      size: ["30", "32", "34"],
+      type: "Bottom",
+    },
+    {
+      id: 3,
+      name: "Dress",
+      price: 5999,
+      gender: "Women",
+      size: ["S", "M", "L"],
+      type: "Dress",
+    },
+    {
+      id: 4,
+      name: "Sweater",
+      price: 3499,
+      gender: "Unisex",
+      size: ["M", "L", "XL"],
+      type: "Top",
+    },
+    {
+      id: 5,
+      name: "Jacket",
+      price: 6999,
+      gender: "Unisex",
+      size: ["S", "M", "L", "XL"],
+      type: "Outerwear",
+    },
+    {
+      id: 6,
+      name: "Skirt",
+      price: 2999,
+      gender: "Women",
+      size: ["S", "M", "L"],
+      type: "Bottom",
+    },
   ];
 
   const [filteredProducts, setFilteredProducts] = useState<Product[]>(products);
@@ -36,12 +78,15 @@ export default function ProductsPage() {
   const [selectedTypes, setSelectedTypes] = useState<string[]>([]);
 
   useEffect(() => {
-    const filtered = products.filter((product) =>
-      product.price >= priceRange[0] &&
-      product.price <= priceRange[1] &&
-      (selectedGenders.length === 0 || selectedGenders.includes(product.gender)) &&
-      (selectedSizes.length === 0 || product.size.some(size => selectedSizes.includes(size))) &&
-      (selectedTypes.length === 0 || selectedTypes.includes(product.type))
+    const filtered = products.filter(
+      (product) =>
+        product.price >= priceRange[0] &&
+        product.price <= priceRange[1] &&
+        (selectedGenders.length === 0 ||
+          selectedGenders.includes(product.gender)) &&
+        (selectedSizes.length === 0 ||
+          product.size.some((size) => selectedSizes.includes(size))) &&
+        (selectedTypes.length === 0 || selectedTypes.includes(product.type))
     );
     setFilteredProducts(filtered);
   }, [products, priceRange, selectedGenders, selectedSizes, selectedTypes]);
@@ -81,7 +126,9 @@ export default function ProductsPage() {
           <h2 className='text-2xl font-serif font-bold mb-4'>Filters</h2>
           <div className='space-y-4'>
             <div>
-              <label className='block mb-2 text-sm font-semibold'>Price Range</label>
+              <label className='block mb-2 text-sm font-semibold'>
+                Price Range
+              </label>
               <input
                 type='range'
                 min='0'
@@ -93,7 +140,7 @@ export default function ProductsPage() {
               />
               <div className='flex justify-between text-sm mt-1'>
                 <span>₹0</span>
-                <span>₹{priceRange[1].toLocaleString('en-IN')}</span>
+                <span>₹{priceRange[1].toLocaleString("en-IN")}</span>
               </div>
             </div>
             <div>
@@ -102,11 +149,13 @@ export default function ProductsPage() {
                 {["Men", "Women", "Unisex"].map((gender) => (
                   <button
                     key={gender}
-                    onClick={() => toggleFilter(gender, selectedGenders, setSelectedGenders)}
+                    onClick={() =>
+                      toggleFilter(gender, selectedGenders, setSelectedGenders)
+                    }
                     className={`px-3 py-1 text-sm rounded-full border ${
                       selectedGenders.includes(gender)
-                        ? 'bg-white text-black'
-                        : 'border-gray-600 hover:border-white'
+                        ? "bg-white text-black"
+                        : "border-gray-600 hover:border-white"
                     }`}
                   >
                     {gender}
@@ -120,11 +169,13 @@ export default function ProductsPage() {
                 {["S", "M", "L", "XL", "30", "32", "34"].map((size) => (
                   <button
                     key={size}
-                    onClick={() => toggleFilter(size, selectedSizes, setSelectedSizes)}
+                    onClick={() =>
+                      toggleFilter(size, selectedSizes, setSelectedSizes)
+                    }
                     className={`px-3 py-1 text-sm rounded-full border ${
                       selectedSizes.includes(size)
-                        ? 'bg-white text-black'
-                        : 'border-gray-600 hover:border-white'
+                        ? "bg-white text-black"
+                        : "border-gray-600 hover:border-white"
                     }`}
                   >
                     {size}
@@ -138,11 +189,13 @@ export default function ProductsPage() {
                 {["Top", "Bottom", "Dress", "Outerwear"].map((type) => (
                   <button
                     key={type}
-                    onClick={() => toggleFilter(type, selectedTypes, setSelectedTypes)}
+                    onClick={() =>
+                      toggleFilter(type, selectedTypes, setSelectedTypes)
+                    }
                     className={`px-3 py-1 text-sm rounded-full border ${
                       selectedTypes.includes(type)
-                        ? 'bg-white text-black'
-                        : 'border-gray-600 hover:border-white'
+                        ? "bg-white text-black"
+                        : "border-gray-600 hover:border-white"
                     }`}
                   >
                     {type}
