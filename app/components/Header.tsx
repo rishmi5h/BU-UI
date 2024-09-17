@@ -23,7 +23,7 @@ export default function Header() {
   return (
     <header className='bg-black py-4 sm:py-6 border-b border-gray-800'>
       <nav className='container mx-auto px-4 flex justify-between items-center'>
-        <Link href='/' className='font-serif text-2xl sm:text-3xl font-bold'>
+        <Link href='/' className='font-serif text-2xl sm:text-3xl font-bold hover:text-gray-300 transition-colors'>
           BU
         </Link>
         <div className='flex items-center'>
@@ -38,7 +38,7 @@ export default function Header() {
                 <button
                   type='button'
                   onClick={toggleSearch}
-                  className='absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-white'
+                  className='absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-white transition-colors'
                 >
                   <FaTimes className='text-lg sm:text-xl' />
                 </button>
@@ -46,7 +46,7 @@ export default function Header() {
             ) : (
               <button
                 onClick={toggleSearch}
-                className='text-gray-400 hover:text-white transition-colors flex items-center justify-center w-8 h-8'
+                className='text-gray-400 hover:text-white transition-colors flex items-center justify-center w-8 h-8 hover:scale-110 transform'
               >
                 <FaSearch className='text-xl sm:text-2xl' />
               </button>
@@ -56,7 +56,7 @@ export default function Header() {
             <li>
               <Link
                 href='/cart'
-                className='hover:text-gray-300 transition-colors relative flex items-center justify-center w-8 h-8'
+                className='hover:text-gray-300 transition-colors relative flex items-center justify-center w-8 h-8 hover:scale-110 transform'
               >
                 <FaShoppingBag className='text-xl sm:text-2xl' />
                 {cartItemsCount > 0 && (
@@ -69,7 +69,7 @@ export default function Header() {
             <li>
               <Link
                 href='/wishlist'
-                className='hover:text-gray-300 transition-colors flex items-center justify-center w-8 h-8'
+                className='hover:text-gray-300 transition-colors flex items-center justify-center w-8 h-8 hover:scale-110 transform'
               >
                 <FaHeart className='text-xl sm:text-2xl' />
               </Link>
@@ -77,7 +77,7 @@ export default function Header() {
             <li>
               <Link
                 href='/login'
-                className='hover:text-gray-300 transition-colors flex items-center justify-center w-8 h-8'
+                className='hover:text-gray-300 transition-colors flex items-center justify-center w-8 h-8 hover:scale-110 transform'
               >
                 <FaUser className='text-xl sm:text-2xl' />
               </Link>
