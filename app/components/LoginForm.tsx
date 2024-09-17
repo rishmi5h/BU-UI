@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { FaGoogle } from "react-icons/fa";
 
 export default function LoginForm() {
   const [email, setEmail] = useState("");
@@ -11,6 +12,11 @@ export default function LoginForm() {
     e.preventDefault();
     // Handle login logic here
     console.log("Login attempted with:", { email, password });
+  };
+
+  const handleGoogleSignIn = () => {
+    // Handle Google sign-in logic here
+    console.log("Google sign-in attempted");
   };
 
   return (
@@ -50,6 +56,15 @@ export default function LoginForm() {
           Login
         </button>
       </form>
+      <div className="mt-4">
+        <button
+          onClick={handleGoogleSignIn}
+          className="w-full bg-red-600 text-white px-6 py-2 rounded hover:bg-red-700 transition-colors flex items-center justify-center"
+        >
+          <FaGoogle className="mr-2" />
+          Sign in with Google
+        </button>
+      </div>
       <p className="mt-4 text-center">
         Don&apos;t have an account?{" "}
         <Link href="/register" className="text-white hover:underline">
