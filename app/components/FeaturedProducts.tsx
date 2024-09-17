@@ -1,12 +1,23 @@
+'use client';
+
 import Link from "next/link";
-import { FaShoppingCart } from "react-icons/fa";
+import { FaShoppingCart, FaHeart } from "react-icons/fa";
+import { useState } from "react";
 
 export default function FeaturedProducts() {
+  const [wishlist, setWishlist] = useState<number[]>([]);
+
   const featuredProducts = [
     { id: 1, name: "Black T-Shirt", price: 29.99 },
     { id: 2, name: "Black Jeans", price: 59.99 },
     { id: 3, name: "Black Dress", price: 79.99 },
   ];
+
+  const toggleWishlist = (id: number) => {
+    setWishlist(prev => 
+      prev.includes(id) ? prev.filter(item => item !== id) : [...prev, id]
+    );
+  };
 
   return (
     <section>
@@ -15,8 +26,14 @@ export default function FeaturedProducts() {
         {featuredProducts.map((product) => (
           <div
             key={product.id}
-            className='bg-gray-900 p-6 rounded-lg hover:bg-gray-800 transition-colors'
+            className='bg-gray-900 p-6 rounded-lg hover:bg-gray-800 transition-colors relative'
           >
+            <button 
+              onClick={() => toggleWishlist(product.id)}
+              className="absolute top-4 right-4 text-gray-400 hover:text-red-500 transition-colors"
+            >
+              <FaHeart className={wishlist.includes(product.id) ? "text-red-500" : ""} />
+            </button>
             <Link href={`/products/${product.id}`}>
               <h3 className='text-xl font-semibold mb-2'>{product.name}</h3>
               <p className='text-gray-400 mb-4'>${product.price.toFixed(2)}</p>
