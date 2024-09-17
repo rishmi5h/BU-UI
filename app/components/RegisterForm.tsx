@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import { FaGoogle } from "react-icons/fa";
 
 export default function RegisterForm() {
   const [name, setName] = useState('');
@@ -13,6 +14,11 @@ export default function RegisterForm() {
     e.preventDefault();
     // Here you would typically handle the registration logic
     console.log('Registration submitted:', { name, email, password });
+  };
+
+  const handleGoogleSignIn = () => {
+    // Handle Google sign-in logic here
+    console.log("Google sign-in attempted");
   };
 
   return (
@@ -67,6 +73,15 @@ export default function RegisterForm() {
           Register
         </button>
       </form>
+      <div className="mt-4">
+        <button
+          onClick={handleGoogleSignIn}
+          className="w-full bg-red-600 text-white px-6 py-2 rounded hover:bg-red-700 transition-colors flex items-center justify-center"
+        >
+          <FaGoogle className="mr-2" />
+          Sign up with Google
+        </button>
+      </div>
       <p className="mt-4 text-center">
         Already have an account? <Link href="/login" className="text-white hover:underline">Login here</Link>
       </p>
