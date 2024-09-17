@@ -3,6 +3,7 @@ import { Playfair_Display, Lato } from "next/font/google";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import { CartProvider } from "./context/CartContext";
+import { WishlistProvider } from "./context/WishlistContext";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -28,11 +29,13 @@ export default function RootLayout({
     <html lang='en' className={`${playfair.variable} ${lato.variable}`}>
       <body className='bg-black text-white min-h-screen flex flex-col font-sans'>
         <CartProvider>
-          <Header />
-          <main className='flex-grow container mx-auto px-4 py-12'>
-            {children}
-          </main>
-          <Footer />
+          <WishlistProvider>
+            <Header />
+            <main className='flex-grow container mx-auto px-4 py-12'>
+              {children}
+            </main>
+            <Footer />
+          </WishlistProvider>
         </CartProvider>
       </body>
     </html>
