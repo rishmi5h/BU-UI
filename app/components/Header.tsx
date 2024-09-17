@@ -6,7 +6,7 @@ export default function Header() {
     <header className='bg-black py-6 border-b border-gray-800'>
       <nav className='container mx-auto px-4 flex justify-between items-center'>
         <Link href='/' className='font-serif text-3xl font-bold'>
-          Black Unlimited
+          BU
         </Link>
         <div className='flex items-center space-x-6'>
           <form className='relative'>
