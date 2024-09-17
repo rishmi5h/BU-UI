@@ -5,6 +5,7 @@ import { FaHeart, FaShoppingBag, FaCheck } from "react-icons/fa";
 import { useState, useEffect } from "react";
 import { useCart } from "../context/CartContext";
 import { useWishlist } from "../context/WishlistContext";
+import Image from 'next/image';
 
 type Product = {
   id: number;
@@ -13,6 +14,8 @@ type Product = {
   gender: "Men" | "Women" | "Unisex";
   size: string[];
   type: string;
+  imageFront: string;
+  imageBack: string;
 };
 
 export default function ProductList({
@@ -158,19 +161,33 @@ export default function ProductList({
             >
               <button
                 onClick={() => toggleWishlist(product)}
-                className='absolute top-4 right-4 text-gray-400 hover:text-red-500 transition-colors'
+                className='absolute top-4 right-4 text-gray-400 hover:text-red-500 transition-colors z-10 bg-gray-800 p-2 rounded-full'
               >
                 <FaHeart
                   className={isInWishlist(product.id) ? "text-red-500" : ""}
                 />
               </button>
               <Link href={`/products/${product.id}`}>
+                <div className="relative w-full h-56 mb-4 group">
+                  <Image
+                    src={product.imageFront}
+                    alt={`${product.name} front view`}
+                    layout="fill"
+                    objectFit="contain"
+                    className="transition-opacity duration-300 ease-in-out group-hover:opacity-0"
+                  />
+                  <Image
+                    src={product.imageBack}
+                    alt={`${product.name} back view`}
+                    layout="fill"
+                    objectFit="contain"
+                    className="opacity-0 transition-opacity duration-300 ease-in-out group-hover:opacity-100"
+                  />
+                </div>
                 <h2 className='text-xl font-semibold mb-2'>{product.name}</h2>
-                <p className='text-gray-400 mb-2'>
+                <p className='text-gray-400 mb-4'>
                   ₹{product.price.toLocaleString("en-IN")}
                 </p>
-                <p className='text-gray-400 mb-2'>{product.gender}</p>
-                <p className='text-gray-400 mb-4'>{product.type}</p>
               </Link>
               <button
                 onClick={() => handleAddToCart(product)}
