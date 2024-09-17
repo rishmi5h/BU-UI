@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { FaSearch, FaShoppingCart, FaHeart, FaUser } from "react-icons/fa";
+import { FaSearch, FaShoppingBag, FaHeart, FaUser } from "react-icons/fa";
 
 export default function Header() {
   return (
@@ -25,18 +25,10 @@ export default function Header() {
           <ul className='flex space-x-6 text-sm uppercase tracking-wide'>
             <li>
               <Link
-                href='/products'
-                className='hover:text-gray-300 transition-colors'
-              >
-                Products
-              </Link>
-            </li>
-            <li>
-              <Link
                 href='/cart'
                 className='hover:text-gray-300 transition-colors'
               >
-                <FaShoppingCart />
+                <FaShoppingBag />
               </Link>
             </li>
             <li>
