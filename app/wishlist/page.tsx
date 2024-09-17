@@ -4,12 +4,13 @@ import { useWishlist } from "../context/WishlistContext";
 import { useCart } from "../context/CartContext";
 import { FaTrash, FaShoppingBag } from "react-icons/fa";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function WishlistPage() {
   const { wishlist, removeFromWishlist } = useWishlist();
   const { addToCart } = useCart();
 
-  const handleAddToCart = (item: typeof wishlist[0]) => {
+  const handleAddToCart = (item: (typeof wishlist)[0]) => {
     addToCart({ ...item, quantity: 1 });
     removeFromWishlist(item.id);
   };
@@ -26,9 +27,22 @@ export default function WishlistPage() {
               key={item.id}
               className='flex items-center justify-between bg-gray-900 p-4 rounded-lg'
             >
-              <div>
-                <h2 className='text-xl font-semibold'>{item.name}</h2>
-                <p className='text-gray-400'>₹{item.price.toLocaleString('en-IN')}</p>
+              <div className='flex items-center'>
+                <div className='relative w-20 h-20 mr-4'>
+                  <Image
+                    src={item.imageFront}
+                    alt={item.name}
+                    layout='fill'
+                    objectFit='cover'
+                    className='rounded'
+                  />
+                </div>
+                <div>
+                  <h2 className='text-xl font-semibold'>{item.name}</h2>
+                  <p className='text-gray-400'>
+                    ₹{item.price.toLocaleString("en-IN")}
+                  </p>
+                </div>
               </div>
               <div className='flex items-center space-x-4'>
                 <button
