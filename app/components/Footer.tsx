@@ -23,8 +23,9 @@ export default function Footer() {
             <FaTwitter />
           </a>
           <a
-            href='#'
+            href='https://www.instagram.com/black.unlimited/'
             className='text-gray-400 hover:text-white transition-colors'
+            target='_blank'
           >
             <FaInstagram />
           </a>
