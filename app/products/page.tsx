@@ -8,6 +8,8 @@ const products = [
     gender: "Unisex" as const,
     size: ["S", "M", "L"],
     type: "Top",
+    imageFront: "/images/tshirt-front.jpg",
+    imageBack: "/images/tshirt-back.jpg",
   },
   {
     id: 2,
@@ -16,6 +18,8 @@ const products = [
     gender: "Men" as const,
     size: ["30", "32", "34"],
     type: "Bottom",
+    imageFront: "/images/jeans-front.jpg",
+    imageBack: "/images/jeans-back.jpg",
   },
   {
     id: 3,
@@ -24,6 +28,8 @@ const products = [
     gender: "Women" as const,
     size: ["S", "M", "L"],
     type: "Dress",
+    imageFront: "/images/dress-front.jpg",
+    imageBack: "/images/dress-back.jpg",
   },
   {
     id: 4,
@@ -32,6 +38,8 @@ const products = [
     gender: "Unisex" as const,
     size: ["M", "L", "XL"],
     type: "Top",
+    imageFront: "/images/sweater-front.jpg",
+    imageBack: "/images/sweater-back.jpg",
   },
   {
     id: 5,
@@ -40,14 +48,18 @@ const products = [
     gender: "Unisex" as const,
     size: ["S", "M", "L", "XL"],
     type: "Outerwear",
+    imageFront: "/images/jacket-front.jpg",
+    imageBack: "/images/jacket-back.jpg",
   },
   {
     id: 6,
-    name: "Skirt",
+    name: "Sweatshirt",
     price: 2999,
-    gender: "Women" as const,
-    size: ["S", "M", "L"],
-    type: "Bottom",
+    gender: "Unisex" as const,
+    size: ["S", "M", "L", "XL"],
+    type: "Top",
+    imageFront: "/images/sweatshirt-front.jpg",
+    imageBack: "/images/sweatshirt-back.jpg",
   },
 ];
 
