@@ -9,12 +9,17 @@ import {
   FaTimes,
 } from "react-icons/fa";
 import { useCart } from "../context/CartContext";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import dynamic from 'next/dynamic';
 
-export default function Header() {
+const Header = () => {
   const { cart } = useCart();
-  const cartItemsCount = cart.reduce((total, item) => total + item.quantity, 0);
+  const [cartItemsCount, setCartItemsCount] = useState(0);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+
+  useEffect(() => {
+    setCartItemsCount(cart.reduce((total, item) => total + item.quantity, 0));
+  }, [cart]);
 
   const toggleSearch = () => {
     setIsSearchOpen(!isSearchOpen);
@@ -88,3 +93,5 @@ export default function Header() {
     </header>
   );
 }
+
+export default dynamic(() => Promise.resolve(Header), { ssr: false });
