@@ -1,7 +1,7 @@
 'use client';
 
 import Link from "next/link";
-import { FaShoppingCart, FaHeart } from "react-icons/fa";
+import { FaShoppingBag, FaHeart } from "react-icons/fa";
 import { useState } from "react";
 
 export default function FeaturedProducts() {
@@ -38,8 +38,8 @@ export default function FeaturedProducts() {
               <h3 className='text-xl font-semibold mb-2'>{product.name}</h3>
               <p className='text-gray-400 mb-4'>${product.price.toFixed(2)}</p>
               <button className='flex items-center justify-center w-full bg-white text-black px-4 py-2 rounded-full hover:bg-gray-200 transition-colors text-sm uppercase tracking-wide font-bold'>
-                <FaShoppingCart className='mr-2' />
-                Add to Cart
+                <FaShoppingBag className='mr-2' />
+                Add to Bag
               </button>
             </Link>
           </div>
