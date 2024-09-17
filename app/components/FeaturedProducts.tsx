@@ -1,12 +1,13 @@
 "use client";
 
 import Link from "next/link";
-import { FaShoppingBag, FaHeart } from "react-icons/fa";
+import { FaShoppingBag, FaHeart, FaCheck } from "react-icons/fa";
 import { useState } from "react";
 import { useCart } from "../context/CartContext";
 
 export default function FeaturedProducts() {
   const [wishlist, setWishlist] = useState<number[]>([]);
+  const [addedToCart, setAddedToCart] = useState<number[]>([]);
   const { addToCart } = useCart();
 
   const featuredProducts = [
@@ -19,6 +20,14 @@ export default function FeaturedProducts() {
     setWishlist((prev) =>
       prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id]
     );
+  };
+
+  const handleAddToCart = (product: typeof featuredProducts[0]) => {
+    addToCart({ ...product, quantity: 1 });
+    setAddedToCart((prev) => [...prev, product.id]);
+    setTimeout(() => {
+      setAddedToCart((prev) => prev.filter((id) => id !== product.id));
+    }, 2000);
   };
 
   return (
@@ -45,11 +54,20 @@ export default function FeaturedProducts() {
               </p>
             </Link>
             <button
-              onClick={() => addToCart({ ...product, quantity: 1 })}
+              onClick={() => handleAddToCart(product)}
               className='flex items-center justify-center w-full bg-white text-black px-4 py-2 rounded-full hover:bg-gray-200 transition-colors text-sm uppercase tracking-wide font-bold'
             >
-              <FaShoppingBag className='mr-2' />
-              Add to Bag
+              {addedToCart.includes(product.id) ? (
+                <>
+                  <FaCheck className='mr-2' />
+                  Added to Cart
+                </>
+              ) : (
+                <>
+                  <FaShoppingBag className='mr-2' />
+                  Add to Bag
+                </>
+              )}
             </button>
           </div>
         ))}
