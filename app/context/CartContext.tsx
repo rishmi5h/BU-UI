@@ -9,6 +9,7 @@ type CartItem = {
   quantity: number;
   imageFront: string;
   imageBack: string;
+  size?: string;  // Add this line
 };
 
 type CartContextType = {
@@ -37,10 +38,10 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
 
   const addToCart = (item: CartItem) => {
     setCart((prevCart) => {
-      const existingItem = prevCart.find((cartItem) => cartItem.id === item.id);
+      const existingItem = prevCart.find((cartItem) => cartItem.id === item.id && cartItem.size === item.size);
       if (existingItem) {
         return prevCart.map((cartItem) =>
-          cartItem.id === item.id
+          cartItem.id === item.id && cartItem.size === item.size
             ? { ...cartItem, quantity: cartItem.quantity + 1 }
             : cartItem
         );

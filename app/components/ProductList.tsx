@@ -65,7 +65,11 @@ export default function ProductList({
   };
 
   const handleAddToCart = (product: Product) => {
-    addToCart({ ...product, quantity: 1 });
+    addToCart({ 
+      ...product, 
+      quantity: 1, 
+      size: product.size[0] // Use the first size as default
+    });
     setAddedToCart((prev) => [...prev, product.id]);
     setTimeout(() => {
       setAddedToCart((prev) => prev.filter((id) => id !== product.id));
