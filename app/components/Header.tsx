@@ -1,7 +1,13 @@
+'use client';
+
 import Link from "next/link";
 import { FaSearch, FaShoppingBag, FaHeart, FaUser } from "react-icons/fa";
+import { useCart } from "../context/CartContext";
 
 export default function Header() {
+  const { cart } = useCart();
+  const cartItemsCount = cart.reduce((total, item) => total + item.quantity, 0);
+
   return (
     <header className='bg-black py-6 border-b border-gray-800'>
       <nav className='container mx-auto px-4 flex justify-between items-center'>
@@ -26,9 +32,14 @@ export default function Header() {
             <li>
               <Link
                 href='/cart'
-                className='hover:text-gray-300 transition-colors'
+                className='hover:text-gray-300 transition-colors relative'
               >
                 <FaShoppingBag />
+                {cartItemsCount > 0 && (
+                  <span className="absolute -top-2 -right-2 bg-white text-black rounded-full w-5 h-5 flex items-center justify-center text-xs">
+                    {cartItemsCount}
+                  </span>
+                )}
               </Link>
             </li>
             <li>
