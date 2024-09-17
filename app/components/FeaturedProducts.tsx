@@ -4,11 +4,12 @@ import Link from "next/link";
 import { FaShoppingBag, FaHeart, FaCheck } from "react-icons/fa";
 import { useState } from "react";
 import { useCart } from "../context/CartContext";
+import { useWishlist } from "../context/WishlistContext";
 
 export default function FeaturedProducts() {
-  const [wishlist, setWishlist] = useState<number[]>([]);
   const [addedToCart, setAddedToCart] = useState<number[]>([]);
   const { addToCart } = useCart();
+  const { addToWishlist, removeFromWishlist, isInWishlist } = useWishlist();
 
   const featuredProducts = [
     { id: 1, name: "Black T-Shirt", price: 1999 },
@@ -16,10 +17,12 @@ export default function FeaturedProducts() {
     { id: 3, name: "Black Dress", price: 5999 },
   ];
 
-  const toggleWishlist = (id: number) => {
-    setWishlist((prev) =>
-      prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id]
-    );
+  const toggleWishlist = (product: typeof featuredProducts[0]) => {
+    if (isInWishlist(product.id)) {
+      removeFromWishlist(product.id);
+    } else {
+      addToWishlist(product);
+    }
   };
 
   const handleAddToCart = (product: typeof featuredProducts[0]) => {
@@ -40,11 +43,11 @@ export default function FeaturedProducts() {
             className='bg-gray-900 p-6 rounded-lg hover:bg-gray-800 transition-colors relative'
           >
             <button
-              onClick={() => toggleWishlist(product.id)}
+              onClick={() => toggleWishlist(product)}
               className='absolute top-4 right-4 text-gray-400 hover:text-red-500 transition-colors'
             >
               <FaHeart
-                className={wishlist.includes(product.id) ? "text-red-500" : ""}
+                className={isInWishlist(product.id) ? "text-red-500" : ""}
               />
             </button>
             <Link href={`/products/${product.id}`}>
