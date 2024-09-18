@@ -8,8 +8,8 @@ const products = [
     gender: "Unisex" as const,
     size: ["S", "M", "L"],
     type: "Top",
-    imageFront: "/images/tshirt-front.jpg",
-    imageBack: "/images/tshirt-back.jpg",
+    imageFront: "/images/tshirt-front.webp",
+    imageBack: "/images/tshirt-back.webp",
   },
   {
     id: 2,
@@ -18,8 +18,8 @@ const products = [
     gender: "Men" as const,
     size: ["30", "32", "34"],
     type: "Bottom",
-    imageFront: "/images/jeans-front.jpg",
-    imageBack: "/images/jeans-back.jpg",
+    imageFront: "/images/jeans-front.webp",
+    imageBack: "/images/jeans-back.webp",
   },
   {
     id: 3,
@@ -28,8 +28,8 @@ const products = [
     gender: "Women" as const,
     size: ["S", "M", "L"],
     type: "Dress",
-    imageFront: "/images/dress-front.jpg",
-    imageBack: "/images/dress-back.jpg",
+    imageFront: "/images/dress-front.webp",
+    imageBack: "/images/dress-back.webp",
   },
   {
     id: 4,
@@ -38,8 +38,8 @@ const products = [
     gender: "Unisex" as const,
     size: ["M", "L", "XL"],
     type: "Top",
-    imageFront: "/images/sweater-front.jpg",
-    imageBack: "/images/sweater-back.jpg",
+    imageFront: "/images/sweater-front.webp",
+    imageBack: "/images/sweater-back.webp",
   },
   {
     id: 5,
@@ -48,8 +48,8 @@ const products = [
     gender: "Unisex" as const,
     size: ["S", "M", "L", "XL"],
     type: "Outerwear",
-    imageFront: "/images/jacket-front.jpg",
-    imageBack: "/images/jacket-back.jpg",
+    imageFront: "/images/jacket-front.webp",
+    imageBack: "/images/jacket-back.webp",
   },
   {
     id: 6,
@@ -58,8 +58,8 @@ const products = [
     gender: "Unisex" as const,
     size: ["S", "M", "L", "XL"],
     type: "Top",
-    imageFront: "/images/sweatshirt-front.jpg",
-    imageBack: "/images/sweatshirt-back.jpg",
+    imageFront: "/images/sweatshirt-front.webp",
+    imageBack: "/images/sweatshirt-back.webp",
   },
 ];
 
