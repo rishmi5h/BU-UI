@@ -3,6 +3,7 @@
 import { useCart } from "../context/CartContext";
 import { FaTrash, FaMinus, FaPlus } from "react-icons/fa";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function CartPage() {
   const { cart, removeFromCart, updateQuantity, clearCart } = useCart();
@@ -28,7 +29,7 @@ export default function CartPage() {
                       src={item.imageFront}
                       alt={item.name}
                       fill
-                      sizes="(max-width: 80px) 100vw, 80px"
+                      sizes='(max-width: 80px) 100vw, 80px'
                       className='rounded object-cover'
                     />
                   </div>
@@ -76,9 +77,12 @@ export default function CartPage() {
               >
                 Clear Cart
               </button>
-              <button className='bg-white text-black px-4 py-2 rounded hover:bg-gray-200 transition-colors'>
+              <Link
+                href='/checkout'
+                className='bg-white text-black px-4 py-2 rounded hover:bg-gray-200 transition-colors'
+              >
                 Checkout
-              </button>
+              </Link>
             </div>
           </div>
         </>
