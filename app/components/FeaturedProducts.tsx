@@ -20,10 +20,34 @@ export default function FeaturedProducts() {
   const { addToWishlist, removeFromWishlist, isInWishlist } = useWishlist();
 
   const featuredProducts: FeaturedProduct[] = [
-    { id: 1, name: "T-Shirt", price: 1999, imageFront: "/images/tshirt-front.jpg", imageBack: "/images/tshirt-back.jpg" },
-    { id: 2, name: "Jeans", price: 3999, imageFront: "/images/jeans-front.jpg", imageBack: "/images/jeans-back.jpg" },
-    { id: 4, name: "Sweater", price: 3499, imageFront: "/images/sweater-front.jpg", imageBack: "/images/sweater-back.jpg" },
-    { id: 6, name: "Sweatshirt", price: 2999, imageFront: "/images/sweatshirt-front.jpg", imageBack: "/images/sweatshirt-back.jpg" },
+    {
+      id: 1,
+      name: "T-Shirt",
+      price: 1999,
+      imageFront: "/images/tshirt-front.webp",
+      imageBack: "/images/tshirt-back.webp",
+    },
+    {
+      id: 2,
+      name: "Jeans",
+      price: 3999,
+      imageFront: "/images/jeans-front.webp",
+      imageBack: "/images/jeans-back.webp",
+    },
+    {
+      id: 4,
+      name: "Sweater",
+      price: 3499,
+      imageFront: "/images/sweater-front.webp",
+      imageBack: "/images/sweater-back.webp",
+    },
+    {
+      id: 6,
+      name: "Sweatshirt",
+      price: 2999,
+      imageFront: "/images/sweatshirt-front.webp",
+      imageBack: "/images/sweatshirt-back.webp",
+    },
   ];
 
   const toggleWishlist = (product: FeaturedProduct) => {
