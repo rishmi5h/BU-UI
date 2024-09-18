@@ -5,7 +5,6 @@ import { FaShoppingBag, FaHeart, FaCheck } from "react-icons/fa";
 import { useState } from "react";
 import { useCart } from "../context/CartContext";
 import { useWishlist } from "../context/WishlistContext";
-import Image from 'next/image'; // Add this import
 
 type FeaturedProduct = {
   id: number;
@@ -61,22 +60,6 @@ export default function FeaturedProducts() {
               />
             </button>
             <Link href={`/products/${product.id}`}>
-              <div className="relative w-full h-56 mb-4 group">
-                <Image
-                  src={product.imageFront}
-                  alt={`${product.name} front view`}
-                  layout="fill"
-                  objectFit="contain"
-                  className="transition-opacity duration-300 ease-in-out group-hover:opacity-0"
-                />
-                <Image
-                  src={product.imageBack}
-                  alt={`${product.name} back view`}
-                  layout="fill"
-                  objectFit="contain"
-                  className="opacity-0 transition-opacity duration-300 ease-in-out group-hover:opacity-100"
-                />
-              </div>
               <h3 className='text-xl font-semibold mb-2'>{product.name}</h3>
               <p className='text-gray-400 mb-4'>
                 ₹{product.price.toLocaleString("en-IN")}
