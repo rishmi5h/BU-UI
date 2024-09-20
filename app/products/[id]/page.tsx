@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { notFound } from "next/navigation";
 import Image from "next/image";
-import { FaShoppingBag } from "react-icons/fa";
+import { FaShoppingBag, FaCheck } from "react-icons/fa";
 import { useCart } from "../../context/CartContext";
 
 type Product = {
@@ -21,6 +21,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
   const product = getProductById(parseInt(params.id));
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
   const { addToCart } = useCart();
+  const [isAddedToCart, setIsAddedToCart] = useState(false);
 
   if (!product) {
     notFound();
@@ -29,7 +30,8 @@ export default function ProductPage({ params }: { params: { id: string } }) {
   const handleAddToCart = () => {
     if (selectedSize) {
       addToCart({ ...product, quantity: 1, size: selectedSize });
-      // You might want to add some feedback here, like a toast notification
+      setIsAddedToCart(true);
+      setTimeout(() => setIsAddedToCart(false), 2000); // Reset after 2 seconds
     } else {
       alert("Please select a size before adding to cart");
     }
@@ -82,8 +84,17 @@ export default function ProductPage({ params }: { params: { id: string } }) {
           onClick={handleAddToCart}
           className='flex items-center justify-center bg-white text-black px-6 py-2 rounded hover:bg-gray-200 transition-colors'
         >
-          <FaShoppingBag className='mr-2' />
-          Add to Cart
+          {isAddedToCart ? (
+            <>
+              <FaCheck className='mr-2' />
+              Added to Cart
+            </>
+          ) : (
+            <>
+              <FaShoppingBag className='mr-2' />
+              Add to Cart
+            </>
+          )}
         </button>
       </div>
     </div>
