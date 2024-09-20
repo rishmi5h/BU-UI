@@ -92,7 +92,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
           ) : (
             <>
               <FaShoppingBag className='mr-2' />
-              Add to Cart
+              Add to Bag
             </>
           )}
         </button>
